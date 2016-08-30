@@ -30,6 +30,7 @@ $ dpd
 ```
 
 Now you can check [`localhost:2403`](http://localhost:2403) and you
+<<<<<<< 28b75b1e22b8bd3c386c74b13d81329abbf1a4cf
 should see a welcome page. Also, you can check
 [`localhost:2403/dashboard`](http://localhost:2403/dashboard) and the
 deployd will show up.
