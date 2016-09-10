@@ -31,10 +31,9 @@ $ dpd
 ```
 
 Now you can check [`localhost:2403`](http://localhost:2403) and you
-<<<<<<< 28b75b1e22b8bd3c386c74b13d81329abbf1a4cf
 should see a welcome page. Also, you can check
 [`localhost:2403/dashboard`](http://localhost:2403/dashboard) and the
-deployd will show up.
+deployd dashboard will show up.
 
 You can go directly to this step checking out the step1 branch of this
 repository:
@@ -91,3 +90,102 @@ The definition of that module comes on the line 12.
 
 You can go directly up to this point checking out the `step2` branch in
 git as we did in the first step.
+
+## Step 3. Creating our first collection
+
+Now we are going to create our first collection. Deployd will for us create
+a CRUD (*create*, *read*, *update* and *delete*) REST API to add, list,
+modify or remove elements in that collection. We only have to define the
+entity or model and the name of the collection.
+
+To start, we have to go to the dashboard
+[http://localhost:2403/dashboard](http://localhost:2403/dashboard) and
+click on the green button with the `+` simbol. We should see somthing
+like:
+
+![dashboard](/.github/images/dashboard - Create collection.png)
+
+now we are going to create a new collection with the name `contacts`
+
+![dashboard - Create collection](/.github/images/dashboard - Naming collection.png)
+
+Then we will have a new entry on the left menu with the name of that
+collection. If we click on `properties` we could add some properties to
+our contacts entity.
+
+For this workshop we are going to add these:
+- name - `String` - `required`
+- lastName - `String` - `required`
+- phone - `String` - `required`
+
+Check that we can specify the attribute type between `String`, `Number`,
+`Boolean`, `Object (JSON)` and `Array`.
+
+![dashboard - Defining collection attributes](/.github/images/dashboard - Defining collection attributes.png)
+
+Now we should be able to add some contacts if we go to the `data`
+section of the `contacts` entry in the menu.
+
+If we go to the `API` section also, we should see all the endpoints that
+Deployd has created for us.
+
+![dashboard - Contacts API details](/.github/images/dashboard - Contacts API details.png)
+
+Now, if we click one the route
+[`/contacts`](http://localhost:2403/contacts) we should see in the
+browser a JSON object with the data of the contacts that we have added.
+
+It's time to subscribe ng-admin to our collection, so open again
+`index.html` and we are going to add some stuff:
+
+```html
+   // attach the admin application to the DOM and run it
+   var contacts = nga.entity('contacts');
+
+   var fields = [
+     nga.field('name'),
+     nga.field('lastName'),
+     nga.field('phone')
+   ];
+
+   contacts.listView()
+     .fields(fields);
+
+   contacts.creationView()
+     .fields(fields);
+
+   contacts.editionView()
+     .fields(fields);
+
+   admin.addEntity(contacts);
+
+   nga.configure(admin);
+```
+
+In the first line we are telling to ng-admin that we have a collection
+in `/contacts` so it is going to know how to create, read, update and
+delete elements from that collection because both are following the same
+REST API convention.
+
+Then, we are going to create a `listView`, `creationView` and
+`editionView` on all of those views we are passing the `fields` variable
+where we have deffined the attributes of our entity, so ng-admin will
+render those fields in our views. In the last new line, we are
+subscribing the new `contacts` entity to our administraton panel.
+Finally, we can go to [http://localhost:2403](http://localshot:2403) and
+we will see our new administration panel:
+
+![frontend](/.github/images/frontend.png)
+
+We can create, edit, and delete contacts from our panel:
+
+![frontend - Creating a contact](/.github/images/frontend - Creating a contact.png)
+
+Check in the devtool what is happening when you make a change in one
+contact:
+
+![frontend - Contact created - devtools](/.github/images/frontend - Contact created - devtools.png)
+
+You can go directly up to this point checking out the `step3` branch.
+
+
