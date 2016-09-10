@@ -7,6 +7,11 @@ building backends with RESTful APIs very easy, and ng-admin is a
 administration app done with angular which is going to consume the API
 we are going to build with deployd.
 
+## Install mongodb
+```bash
+$ brew install mongodb
+```
+
 ## Step 1. Installing deployd
 
 ```bash
