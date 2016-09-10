@@ -18,6 +18,25 @@ src="http://code.jquery.com/jquery-latest.min.js"></script>
         var admin = nga.application('Prototyping Workshop');
         // more configuration here later
         // attach the admin application to the DOM and run it
+        var contacts = nga.entity('contacts');
+
+        var fields = [
+          nga.field('name'),
+          nga.field('lastName'),
+          nga.field('phone')
+        ];
+
+        contacts.listView()
+          .fields(fields);
+
+        contacts.creationView()
+          .fields(fields);
+
+        contacts.editionView()
+          .fields(fields);
+
+        admin.addEntity(contacts);
+
         nga.configure(admin);
     }]);
   </script>
