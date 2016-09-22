@@ -189,3 +189,7 @@ contact:
 You can go directly up to this point checking out the `step3` branch.
 
 
+## Resources
+- [deployd](http://deployd.com/)
+- [ng-admin](https://github.com/marmelab/ng-admin)
+- [Jeff Cross - Rapid Prototyping with Angular & Deployd - NGConf](https://www.youtube.com/watch?v=0V8fQoqQLLA)
