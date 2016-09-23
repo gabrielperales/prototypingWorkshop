@@ -1,9 +1,9 @@
 # Deployd-ngAdmin-workshop
 
-Let's started! In this workshop we are going to create a small
+Let's get started! In this workshop we are going to create a small
 application using [deployd](https://github.com/deployd/deployd) and
 [ng-admin](https://github.com/marmelab/ng-admin). Deployd is a tool for
-building backends with RESTful APIs very easy, and ng-admin is a
+building a backend with a RESTful API very easily, and ng-admin is an
 administration app done with angular which is going to consume the API
 we are going to build with deployd.
 
